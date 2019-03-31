@@ -9,7 +9,9 @@ export default function sleep(time) {
   if (typeof time !== 'number' || time % 1 !== 0) {
     return undefined;
   }
-  return new Promise((resolve) => {
-    return resolve(setTimeout(time*1000));
-  }).then(resolve => resolve);
+  const start = new Date().getTime();
+  const stop = start + time * 1000;
+  while (new Date().getTime() < stop) {
+    // please, wait...
+  }
 }
