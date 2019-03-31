@@ -6,10 +6,10 @@
  */
 
 export default function sleep(time) {
-  if (typeof time !== 'number') {
+  if (typeof time !== 'number' || time % 1 !== 0) {
     return undefined;
   }
-  setTimeout(() => {
-    return 
-  }, time*1000);
+  return new Promise((resolve) => {
+    return resolve(setTimeout(time*1000));
+  }).then(resolve => resolve);
 }
